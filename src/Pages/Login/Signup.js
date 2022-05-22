@@ -17,13 +17,15 @@ const Signup = () => {
     <section className="flex justify-center items-center h-screen my-48">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
+        className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 border border-primary"
       >
-        <h1 className="text-xl font-bold text-center my-2">Sign Up</h1>
+        <h1 className="text-xl font-bold text-center my-2 text-primary">
+          Sign Up
+        </h1>
         <div className="card-body">
           <div className="form-control">
             <label className="label">
-              <span className="label-text font-bold">Name</span>
+              <span className="label-text font-bold text-primary">Name</span>
             </label>
             <input
               type="text"
@@ -46,7 +48,7 @@ const Signup = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text font-bold">Email</span>
+              <span className="label-text font-bold text-primary">Email</span>
             </label>
             <input
               type="text"
@@ -78,7 +80,9 @@ const Signup = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text font-bold">Password</span>
+              <span className="label-text font-bold text-primary">
+                Password
+              </span>
             </label>
             <input
               type="text"
