@@ -13,7 +13,7 @@ const Login = () => {
     console.log(data);
   };
   return (
-    <section className="flex justify-center items-center h-screen mt-48">
+    <section className="flex justify-center items-center h-screen my-48">
       <div className="card w-full max-w-sm shadow-2xl bg-base-100">
         <form onSubmit={handleSubmit(onSubmit)} className="flex-shrink-0">
           <h1 className="text-xl font-bold text-center my-2 text-primary">
