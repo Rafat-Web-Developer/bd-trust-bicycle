@@ -14,7 +14,7 @@ const Navbar = () => {
   );
   return (
     <header>
-      <nav class="navbar bg-base-100">
+      <nav class="navbar bg-primary text-primary-content">
         <div class="navbar-start">
           <div class="dropdown">
             <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -35,7 +35,7 @@ const Navbar = () => {
             </label>
             <ul
               tabindex="0"
-              class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-primary text-primary-content rounded-box w-52"
             >
               {menuItems}
             </ul>
