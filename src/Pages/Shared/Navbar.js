@@ -16,6 +16,11 @@ const Navbar = () => {
       <li>
         <Link to="/blogs">Blogs</Link>
       </li>
+      <li>
+        <Link className="btn btn-accent" to="/login">
+          Login
+        </Link>
+      </li>
     </>
   );
   return (
