@@ -1,13 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const menuItems = (
     <>
       <li>
-        <a>Home</a>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <a>Blogs</a>
+        <Link to="/blogs">Blogs</Link>
       </li>
     </>
   );
@@ -39,7 +40,9 @@ const Navbar = () => {
               {menuItems}
             </ul>
           </div>
-          <a class="btn btn-ghost normal-case text-xl">BD-TRUST-BICYCLE</a>
+          <Link to="/" class="btn btn-ghost normal-case text-xl">
+            BD-TRUST-BICYCLE
+          </Link>
         </div>
         <div class="navbar-center hidden lg:flex navbar-end">
           <ul class="menu menu-horizontal p-0">{menuItems}</ul>
