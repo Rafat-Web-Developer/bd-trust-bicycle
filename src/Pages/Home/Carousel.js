@@ -2,7 +2,7 @@ import React from "react";
 
 const Carousel = () => {
   return (
-    <div class="carousel w-full">
+    <section class="carousel w-full">
       <div id="slide1" class="carousel-item relative w-full">
         <img
           src="https://api.lorem.space/image/car?w=800&h=200&hash=8B7BCDC2"
@@ -67,7 +67,7 @@ const Carousel = () => {
           </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
