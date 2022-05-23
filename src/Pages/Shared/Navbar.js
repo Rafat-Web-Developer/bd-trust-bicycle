@@ -31,7 +31,7 @@ const Navbar = () => {
       </li>
       {user && (
         <li>
-          <Link to="/dashboard">{user?.displayName}</Link>
+          <Link to="/dashboard/profile">{user?.displayName}</Link>
         </li>
       )}
       {user ? (
