@@ -1,5 +1,8 @@
 import React from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
@@ -14,21 +17,24 @@ const Login = () => {
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
   const navigate = useNavigate();
 
-  if (loading) {
+  if (loading || gLoading) {
     return <Loading></Loading>;
   }
 
   let errorMessage;
-  if (error) {
+  if (error || gError) {
     errorMessage = (
-      <p className="text-error font-bold my-2">{error?.message}</p>
+      <p className="text-error font-bold my-2">
+        {error?.message || gError?.message}
+      </p>
     );
   }
 
-  if (user) {
+  if (user || gUser) {
     navigate("/allParts");
   }
 
@@ -36,6 +42,11 @@ const Login = () => {
     // console.log(data);
     signInWithEmailAndPassword(data.email, data.password);
   };
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle();
+  };
+
   return (
     <section className="flex justify-center items-center h-screen my-48">
       <div className="card w-full max-w-sm shadow-2xl bg-base-100 border border-primary">
@@ -127,7 +138,10 @@ const Login = () => {
           </div>
         </form>
         <div className="divider">OR</div>
-        <button className="btn btn-outline btn-accent m-5 font-bold">
+        <button
+          onClick={handleGoogleSignIn}
+          className="btn btn-outline btn-accent m-5 font-bold"
+        >
           Continue with google
         </button>
       </div>
