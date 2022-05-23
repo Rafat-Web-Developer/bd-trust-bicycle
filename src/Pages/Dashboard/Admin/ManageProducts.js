@@ -1,4 +1,5 @@
 import React from "react";
+import ProductRow from "./ProductRow";
 
 const ManageProducts = () => {
   return (
@@ -15,16 +16,7 @@ const ManageProducts = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th>1</th>
-              <td>Test</td>
-              <td>250</td>
-              <td>
-                <button className="btn btn-error btn-sm text-white">
-                  Delete
-                </button>
-              </td>
-            </tr>
+            <ProductRow></ProductRow>
           </tbody>
         </table>
       </div>
