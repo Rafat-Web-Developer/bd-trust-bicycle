@@ -13,6 +13,7 @@ import RequireAuth from "./Pages/Auth/RequireAuth";
 import AllUsers from "./Pages/Dashboard/Admin/AllUsers";
 import AllAdmin from "./Pages/Dashboard/Admin/AllAdmin";
 import ManageProducts from "./Pages/Dashboard/Admin/ManageProducts";
+import ManageOrders from "./Pages/Dashboard/Admin/ManageOrders";
 
 function App() {
   return (
@@ -34,6 +35,10 @@ function App() {
           <Route
             path="manageProducts"
             element={<ManageProducts></ManageProducts>}
+          ></Route>
+          <Route
+            path="manageOrders"
+            element={<ManageOrders></ManageOrders>}
           ></Route>
           <Route path="myOrders" element={<MyOrders></MyOrders>}></Route>
           <Route path="addReview" element={<AddReview></AddReview>}></Route>
