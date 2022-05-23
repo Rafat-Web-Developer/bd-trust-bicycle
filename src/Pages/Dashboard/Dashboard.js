@@ -58,7 +58,7 @@ const Dashboard = () => {
             <Link to="/dashboard/allUsers">{sideLogo}All Users</Link>
           </li>
           <li>
-            <Link to="/dashboard/allUsers">{sideLogo}Add A Product</Link>
+            <Link to="/dashboard/addProduct">{sideLogo}Add A Product</Link>
           </li>
           <li>
             <Link to="/dashboard/manageProducts">
