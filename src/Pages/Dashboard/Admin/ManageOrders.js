@@ -1,4 +1,5 @@
 import React from "react";
+import OrderRow from "./OrderRow";
 
 const ManageOrders = () => {
   return (
@@ -16,17 +17,7 @@ const ManageOrders = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th>1</th>
-              <td>Test</td>
-              <td>250</td>
-              <td>user@gmail.com</td>
-              <td>
-                <button className="btn btn-primary btn-sm text-white">
-                  Confirm
-                </button>
-              </td>
-            </tr>
+            <OrderRow></OrderRow>
           </tbody>
         </table>
       </div>
