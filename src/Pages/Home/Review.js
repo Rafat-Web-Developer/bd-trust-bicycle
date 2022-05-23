@@ -22,19 +22,19 @@ const Review = () => {
             type="radio"
             name="rating-4"
             className="mask mask-star-2 bg-primary"
-            checked
+            defaultChecked
           />
           <input
             type="radio"
             name="rating-4"
             className="mask mask-star-2 bg-primary"
-            checked
+            defaultChecked
           />
           <input
             type="radio"
             name="rating-4"
             className="mask mask-star-2 bg-primary"
-            checked
+            defaultChecked
           />
           <input
             type="radio"

@@ -95,7 +95,7 @@ const Login = () => {
             </div>
             <p>
               Create a new account{" "}
-              <Link to="/signUp" className="text-primary font-bold">
+              <Link to="/signup" className="text-primary font-bold">
                 Sign Up
               </Link>
             </p>

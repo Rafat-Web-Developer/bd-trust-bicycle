@@ -1,6 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import Loading from "../Shared/Loading";
 
 const Signup = () => {
   const {
@@ -8,9 +11,29 @@ const Signup = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  const navigate = useNavigate();
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
+
+  let errorMessage;
+  if (error) {
+    errorMessage = (
+      <p className="text-error font-bold my-2">{error?.message}</p>
+    );
+  }
+
+  if (user) {
+    navigate("/allParts");
+  }
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
+    createUserWithEmailAndPassword(data.email, data.password);
   };
 
   return (
@@ -112,6 +135,7 @@ const Signup = () => {
               )}
             </label>
           </div>
+          {errorMessage}
           <div className="form-control mt-6">
             <input
               className="btn btn-primary text-white"
