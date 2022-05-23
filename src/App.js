@@ -16,6 +16,7 @@ import ManageProducts from "./Pages/Dashboard/Admin/ManageProducts";
 import ManageOrders from "./Pages/Dashboard/Admin/ManageOrders";
 import AddProduct from "./Pages/Dashboard/Admin/AddProduct";
 import DashboardHome from "./Pages/Dashboard/DashboardHome";
+import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 
 function App() {
   return (
@@ -49,6 +50,10 @@ function App() {
           <Route path="profile" element={<Profile></Profile>}></Route>
         </Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
+        <Route
+          path="/myPortfolio"
+          element={<MyPortfolio></MyPortfolio>}
+        ></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<Signup></Signup>}></Route>
       </Routes>
