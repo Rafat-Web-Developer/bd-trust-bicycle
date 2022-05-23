@@ -1,4 +1,5 @@
 import React from "react";
+import UserRow from "./UserRow";
 
 const AllUsers = () => {
   return (
@@ -15,14 +16,7 @@ const AllUsers = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th>1</th>
-              <td>Test</td>
-              <td>test@gmail.com</td>
-              <td>
-                <button className="btn btn-primary btn-sm">Make Admin</button>
-              </td>
-            </tr>
+            <UserRow></UserRow>
           </tbody>
         </table>
       </div>
