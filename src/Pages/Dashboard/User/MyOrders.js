@@ -1,9 +1,10 @@
 import React from "react";
+import OrderRow from "./OrderRow";
 
 const MyOrders = () => {
   return (
     <section>
-      <h1 className="mb-5 font-bold text-xl">All Orders</h1>
+      <h1 className="mb-5 font-bold text-xl">My Orders</h1>
       <div class="overflow-x-auto">
         <table class="table table-zebra w-full">
           <thead>
@@ -16,24 +17,7 @@ const MyOrders = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th>1</th>
-              <td>
-                <div class="avatar">
-                  <div class="mask mask-squircle w-12 h-12">
-                    <img
-                      src="https://api.lorem.space/image/shoes?w=400&h=225"
-                      alt="Avatar Tailwind CSS Component"
-                    />
-                  </div>
-                </div>
-              </td>
-              <td>Cy Ganderton</td>
-              <td>250</td>
-              <td>
-                <button className="btn btn-error btn-xs">Delete</button>
-              </td>
-            </tr>
+            <OrderRow></OrderRow>
           </tbody>
         </table>
       </div>
