@@ -43,8 +43,8 @@ const Login = () => {
     signInWithEmailAndPassword(data.email, data.password);
   };
 
-  const handleGoogleSignIn = () => {
-    signInWithGoogle();
+  const handleGoogleSignIn = async () => {
+    await signInWithGoogle();
   };
 
   return (
@@ -94,13 +94,13 @@ const Login = () => {
                 </span>
               </label>
               <input
-                type="text"
+                type="password"
                 placeholder="password"
                 className="input input-bordered"
                 {...register("password", {
                   required: {
                     value: true,
-                    message: "Email is required.",
+                    message: "Password is required.",
                   },
                   minLength: {
                     value: 6,

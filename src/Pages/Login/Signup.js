@@ -1,7 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 
@@ -11,19 +14,23 @@ const Signup = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+  const [updateProfile, updating, uError] = useUpdateProfile(auth);
 
   const navigate = useNavigate();
 
-  if (loading) {
+  if (loading || updating) {
     return <Loading></Loading>;
   }
 
   let errorMessage;
-  if (error) {
+  if (error || uError) {
     errorMessage = (
-      <p className="text-error font-bold my-2">{error?.message}</p>
+      <p className="text-error font-bold my-2">
+        {error?.message || uError?.message}
+      </p>
     );
   }
 
@@ -33,7 +40,8 @@ const Signup = () => {
 
   const onSubmit = async (data) => {
     // console.log(data);
-    createUserWithEmailAndPassword(data.email, data.password);
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
   };
 
   return (
@@ -108,13 +116,13 @@ const Signup = () => {
               </span>
             </label>
             <input
-              type="text"
+              type="password"
               placeholder="password"
               className="input input-bordered"
               {...register("password", {
                 required: {
                   value: true,
-                  message: "Email is required.",
+                  message: "Password is required.",
                 },
                 minLength: {
                   value: 6,

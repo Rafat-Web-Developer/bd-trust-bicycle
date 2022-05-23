@@ -29,6 +29,11 @@ const Navbar = () => {
       <li>
         <Link to="/blogs">Blogs</Link>
       </li>
+      {user && (
+        <li>
+          <Link to="/dashboard">{user?.displayName}</Link>
+        </li>
+      )}
       {user ? (
         <li>
           <button onClick={handleLogout} className="btn btn-error" to>
