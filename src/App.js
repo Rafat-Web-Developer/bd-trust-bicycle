@@ -9,6 +9,7 @@ import AddReview from "./Pages/Dashboard/AddReview";
 import Profile from "./Pages/Dashboard/Profile";
 import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Login/Signup";
+import RequireAuth from "./Pages/Auth/RequireAuth";
 
 function App() {
   return (
@@ -17,7 +18,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/allParts" element={<AllParts></AllParts>}></Route>
-        <Route path="/dashboard" element={<Dashboard></Dashboard>}>
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard></Dashboard>
+            </RequireAuth>
+          }
+        >
           <Route index element={<MyOrders></MyOrders>}></Route>
           <Route path="addReview" element={<AddReview></AddReview>}></Route>
           <Route path="profile" element={<Profile></Profile>}></Route>
