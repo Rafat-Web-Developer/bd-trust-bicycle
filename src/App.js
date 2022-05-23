@@ -10,6 +10,7 @@ import Profile from "./Pages/Dashboard/Profile";
 import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Login/Signup";
 import RequireAuth from "./Pages/Auth/RequireAuth";
+import AllUsers from "./Pages/Dashboard/AllUsers";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           }
         >
           <Route index element={<MyOrders></MyOrders>}></Route>
+          <Route path="allUsers" element={<AllUsers></AllUsers>}></Route>
           <Route path="addReview" element={<AddReview></AddReview>}></Route>
           <Route path="profile" element={<Profile></Profile>}></Route>
         </Route>
