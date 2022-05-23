@@ -2,15 +2,15 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Blogs from "./Pages/Blogs/Blogs";
 import Navbar from "./Pages/Shared/Navbar";
-import AllParts from "./Pages/BycycleParts/AllParts";
+import AllParts from "./Pages/BicycleParts/AllParts";
 import Dashboard from "./Pages/Dashboard/Dashboard";
-import MyOrders from "./Pages/Dashboard/MyOrders";
-import AddReview from "./Pages/Dashboard/AddReview";
+import MyOrders from "./Pages/Dashboard/User/MyOrders";
+import AddReview from "./Pages/Dashboard/User/AddReview";
 import Profile from "./Pages/Dashboard/Profile";
 import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Login/Signup";
 import RequireAuth from "./Pages/Auth/RequireAuth";
-import AllUsers from "./Pages/Dashboard/AllUsers";
+import AllUsers from "./Pages/Dashboard/Admin/AllUsers";
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
             </RequireAuth>
           }
         >
-          <Route index element={<MyOrders></MyOrders>}></Route>
+          <Route path="myOrders" element={<MyOrders></MyOrders>}></Route>
           <Route path="allUsers" element={<AllUsers></AllUsers>}></Route>
           <Route path="addReview" element={<AddReview></AddReview>}></Route>
           <Route path="profile" element={<Profile></Profile>}></Route>
