@@ -1,11 +1,11 @@
 import React from "react";
 
-const UserRow = () => {
+const UserRow = ({ user, index }) => {
+  const { email } = user;
   return (
     <tr>
-      <th>1</th>
-      <td>Test</td>
-      <td>test@gmail.com</td>
+      <th>{index + 1}</th>
+      <td>{email}</td>
       <td>
         <button className="btn btn-primary btn-sm">Make Admin</button>
       </td>
