@@ -45,7 +45,12 @@ const AllAdmin = () => {
           </thead>
           <tbody>
             {admins.map((admin, index) => (
-              <AdminRow key={admin._id} admin={admin} index={index}></AdminRow>
+              <AdminRow
+                key={admin._id}
+                admin={admin}
+                index={index}
+                refetch={refetch()}
+              ></AdminRow>
             ))}
           </tbody>
         </table>
