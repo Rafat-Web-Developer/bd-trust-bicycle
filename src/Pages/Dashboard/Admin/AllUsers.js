@@ -45,7 +45,12 @@ const AllUsers = () => {
           </thead>
           <tbody>
             {users.map((user, index) => (
-              <UserRow key={user._id} user={user} index={index}></UserRow>
+              <UserRow
+                key={user._id}
+                user={user}
+                index={index}
+                refetch={refetch()}
+              ></UserRow>
             ))}
           </tbody>
         </table>
