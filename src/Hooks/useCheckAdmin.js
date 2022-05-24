@@ -20,6 +20,7 @@ const useCheckAdmin = (user) => {
         });
     }
   }, [user]);
+
   return [admin, checkAdminLoading];
 };
 
