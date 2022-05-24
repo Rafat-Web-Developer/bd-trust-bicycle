@@ -1,5 +1,9 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
+import auth from "../../firebase.init";
+import useCheckAdmin from "../../Hooks/useCheckAdmin";
+import Loading from "../Shared/Loading";
 
 const sideLogo = (
   <svg
@@ -18,6 +22,13 @@ const sideLogo = (
   </svg>
 );
 const Dashboard = () => {
+  const [user, loading] = useAuthState(auth);
+  const [admin, checkAdminLoading] = useCheckAdmin(user);
+
+  if (loading || checkAdminLoading) {
+    return <Loading></Loading>;
+  }
+
   return (
     <div className="drawer drawer-mobile">
       <input id="dashboardSidebar" type="checkbox" className="drawer-toggle" />
@@ -51,31 +62,41 @@ const Dashboard = () => {
               Dashboard
             </Link>
           </li>
-          <li>
-            <Link to="/dashboard/allAdmin">{sideLogo}All Admin</Link>
-          </li>
-          <li>
-            <Link to="/dashboard/allUsers">{sideLogo}All Users</Link>
-          </li>
-          <li>
-            <Link to="/dashboard/addProduct">{sideLogo}Add A Product</Link>
-          </li>
-          <li>
-            <Link to="/dashboard/manageProducts">
-              {sideLogo}Manage Products
-            </Link>
-          </li>
-          <li>
-            <Link to="/dashboard/manageOrders">
-              {sideLogo}Manage All Orders
-            </Link>
-          </li>
-          <li>
-            <Link to="/dashboard/myOrders">{sideLogo}My Orders</Link>
-          </li>
-          <li>
-            <Link to="/dashboard/addReview">{sideLogo}Add A Review</Link>
-          </li>
+          {admin && (
+            <>
+              <li>
+                <Link to="/dashboard/allAdmin">{sideLogo}All Admin</Link>
+              </li>
+              <li>
+                <Link to="/dashboard/allUsers">{sideLogo}All Users</Link>
+              </li>
+              <li>
+                <Link to="/dashboard/addProduct">{sideLogo}Add A Product</Link>
+              </li>
+              <li>
+                <Link to="/dashboard/manageProducts">
+                  {sideLogo}Manage Products
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/manageOrders">
+                  {sideLogo}Manage All Orders
+                </Link>
+              </li>
+            </>
+          )}
+
+          {!admin && (
+            <>
+              <li>
+                <Link to="/dashboard/myOrders">{sideLogo}My Orders</Link>
+              </li>
+              <li>
+                <Link to="/dashboard/addReview">{sideLogo}Add A Review</Link>
+              </li>
+            </>
+          )}
+
           <li>
             <Link to="/dashboard/profile">{sideLogo}My Profile</Link>
           </li>
