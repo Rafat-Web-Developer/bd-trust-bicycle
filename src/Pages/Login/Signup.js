@@ -7,6 +7,7 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
+import useToken from "../../Hooks/useToken";
 
 const Signup = () => {
   const {
@@ -19,9 +20,11 @@ const Signup = () => {
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile, updating, uError] = useUpdateProfile(auth);
 
+  const [token, tokenLoading] = useToken(user);
+
   const navigate = useNavigate();
 
-  if (loading || updating) {
+  if (loading || updating || tokenLoading) {
     return <Loading></Loading>;
   }
 
@@ -34,7 +37,7 @@ const Signup = () => {
     );
   }
 
-  if (user) {
+  if (token) {
     navigate("/allParts");
   }
 
