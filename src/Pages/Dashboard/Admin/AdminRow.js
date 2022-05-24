@@ -1,11 +1,12 @@
 import React from "react";
 
-const AdminRow = () => {
+const AdminRow = ({ admin, index }) => {
+  const { email, role } = admin;
   return (
     <tr>
-      <th>1</th>
-      <td>Test</td>
-      <td>test@gmail.com</td>
+      <th>{index + 1}</th>
+      <td>{email}</td>
+      <td>{role}</td>
       <td>
         <button className="btn btn-accent btn-sm text-white">Make User</button>
       </td>
