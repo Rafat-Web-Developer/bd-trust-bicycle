@@ -18,8 +18,8 @@ const useToken = (user) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          //   localStorage.setItem("accessToken", data?.token);
-          setToken("125asda");
+          localStorage.setItem("accessToken", data?.token);
+          setToken(data?.token);
           setTokenLoading(false);
         });
     }
