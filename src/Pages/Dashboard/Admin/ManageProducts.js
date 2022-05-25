@@ -53,7 +53,6 @@ const ManageProducts = () => {
                 key={product._id}
                 product={product}
                 index={index}
-                refetch={refetch}
                 setShowProductDeleteModal={setShowProductDeleteModal}
                 setModalData={setModalData}
               ></ProductRow>
@@ -62,7 +61,12 @@ const ManageProducts = () => {
         </table>
       </div>
       {showProductDeleteModal && (
-        <ProductDeleteModal product={modalData}></ProductDeleteModal>
+        <ProductDeleteModal
+          product={modalData}
+          refetch={refetch}
+          setShowProductDeleteModal={setShowProductDeleteModal}
+          setModalData={setModalData}
+        ></ProductDeleteModal>
       )}
     </section>
   );

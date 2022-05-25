@@ -1,7 +1,42 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import auth from "../../../firebase.init";
 
-const ProductDeleteModal = ({ product }) => {
-  const { product_name, product_price } = product;
+const ProductDeleteModal = ({
+  product,
+  refetch,
+  setShowProductDeleteModal,
+  setModalData,
+}) => {
+  const { _id, product_name, product_price } = product;
+  const navigate = useNavigate();
+
+  const handleDeleteProduct = () => {
+    fetch(`http://localhost:5000/product/${_id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          signOut(auth);
+          localStorage.removeItem("accessToken");
+          navigate("/login");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setModalData({});
+        setShowProductDeleteModal(false);
+        refetch();
+        toast.success("Product Deleted successfully. Alhamdulillah!!");
+      });
+  };
+
   return (
     <div>
       <input type="checkbox" id="product_delete_modal" class="modal-toggle" />
@@ -19,7 +54,7 @@ const ProductDeleteModal = ({ product }) => {
               No
             </label>
             <label
-              for="product_delete_modal"
+              onClick={handleDeleteProduct}
               class="btn btn-error text-white font-bold"
             >
               Yes

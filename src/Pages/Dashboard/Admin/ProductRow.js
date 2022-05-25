@@ -3,13 +3,12 @@ import React from "react";
 const ProductRow = ({
   product,
   index,
-  refetch,
   setShowProductDeleteModal,
   setModalData,
 }) => {
   const { product_name, product_price } = product;
 
-  const handleDeleteProduct = () => {
+  const handleShowModel = () => {
     setModalData(product);
     setShowProductDeleteModal(true);
   };
@@ -20,7 +19,7 @@ const ProductRow = ({
       <td>{product_price}</td>
       <td>
         <label
-          onClick={handleDeleteProduct}
+          onClick={handleShowModel}
           for="product_delete_modal"
           class="btn btn-error btn-sm text-white"
         >

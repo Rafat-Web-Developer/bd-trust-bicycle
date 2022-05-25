@@ -10,6 +10,7 @@ const AddProduct = () => {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
 
   const navigate = useNavigate();
@@ -33,8 +34,8 @@ const AddProduct = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         toast.success("Product added successfully. Alhamdulillah!!");
+        reset();
       });
   };
 
