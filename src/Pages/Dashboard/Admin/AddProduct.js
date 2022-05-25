@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const AddProduct = () => {
   const {
@@ -9,7 +10,20 @@ const AddProduct = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
+    fetch("http://localhost:5000/product", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast.success("Product added successfully. Alhamdulillah!!");
+      });
   };
 
   return (
@@ -109,7 +123,7 @@ const AddProduct = () => {
                   </span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   placeholder="Product minimum order quantity"
                   className="input input-bordered text-primary font-bold"
                   {...register("minimum_order_quantity", {
@@ -135,7 +149,7 @@ const AddProduct = () => {
                   </span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   placeholder="Product available quantity"
                   className="input input-bordered text-primary font-bold"
                   {...register("available_quantity", {
