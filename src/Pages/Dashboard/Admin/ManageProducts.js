@@ -1,12 +1,15 @@
 import { signOut } from "firebase/auth";
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading";
+import ProductDeleteModal from "./ProductDeleteModal";
 import ProductRow from "./ProductRow";
 
 const ManageProducts = () => {
+  const [modalData, setModalData] = useState({});
+  const [showProductDeleteModal, setShowProductDeleteModal] = useState(false);
   const navigate = useNavigate();
   const {
     data: products,
@@ -51,11 +54,16 @@ const ManageProducts = () => {
                 product={product}
                 index={index}
                 refetch={refetch}
+                setShowProductDeleteModal={setShowProductDeleteModal}
+                setModalData={setModalData}
               ></ProductRow>
             ))}
           </tbody>
         </table>
       </div>
+      {showProductDeleteModal && (
+        <ProductDeleteModal product={modalData}></ProductDeleteModal>
+      )}
     </section>
   );
 };
