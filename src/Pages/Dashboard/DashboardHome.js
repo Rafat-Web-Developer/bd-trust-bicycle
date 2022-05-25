@@ -1,5 +1,6 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "react-query";
 import auth from "../../firebase.init";
 import useCheckAdmin from "../../Hooks/useCheckAdmin";
 import Loading from "../Shared/Loading";
@@ -8,7 +9,15 @@ const DashboardHome = () => {
   const [user, loading] = useAuthState(auth);
   const [admin, checkAdminLoading] = useCheckAdmin(user);
 
-  if (loading || checkAdminLoading) {
+  const { data: totalCount, isLoading } = useQuery("totalCount", () =>
+    fetch("http://localhost:5000/total", {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
+  );
+
+  if (loading || isLoading || checkAdminLoading) {
     return <Loading></Loading>;
   }
 
@@ -20,13 +29,13 @@ const DashboardHome = () => {
             <div class="stats bg-primary text-primary-content">
               <div class="stat text-center">
                 <div class="stat-title font-bold">Total Admin</div>
-                <div class="stat-value">5</div>
+                <div class="stat-value">{totalCount.adminCount}</div>
               </div>
             </div>
             <div class="stats bg-primary text-primary-content">
               <div class="stat text-center">
                 <div class="stat-title font-bold">Total Users</div>
-                <div class="stat-value text-center">10</div>
+                <div class="stat-value text-center">{totalCount.userCount}</div>
               </div>
             </div>
             <div class="stats bg-primary text-primary-content">

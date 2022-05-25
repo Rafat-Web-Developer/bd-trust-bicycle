@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 import Home from "./Pages/Home/Home";
 import Blogs from "./Pages/Blogs/Blogs";
 import Navbar from "./Pages/Shared/Navbar";
@@ -21,11 +20,14 @@ import DashboardHome from "./Pages/Dashboard/DashboardHome";
 import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 import RequireUser from "./Pages/Auth/RequireUser";
 import RequireAdmin from "./Pages/Auth/RequireAdmin";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <>
       <Navbar></Navbar>
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/allParts" element={<AllParts></AllParts>}></Route>
@@ -104,7 +106,6 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<Signup></Signup>}></Route>
       </Routes>
-      <ToastContainer />
     </>
   );
 }
