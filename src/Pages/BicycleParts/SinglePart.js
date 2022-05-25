@@ -1,13 +1,22 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const SinglePart = ({ product }) => {
   const {
+    _id,
     product_name,
     product_description,
     product_price,
     available_quantity,
     minimum_order_quantity,
   } = product;
+
+  const navigate = useNavigate();
+
+  const handleBuy = () => {
+    navigate(`/checkout/${_id}`);
+  };
+
   return (
     <div className="card lg:max-w-96 bg-base-200 shadow-xl">
       <figure className="px-10 pt-10">
@@ -26,7 +35,9 @@ const SinglePart = ({ product }) => {
           Price : {product_price}
         </p>
         <div className="card-actions">
-          <button className="btn btn-primary">Buy Now</button>
+          <button onClick={handleBuy} className="btn btn-primary">
+            Buy Now
+          </button>
         </div>
       </div>
     </div>
