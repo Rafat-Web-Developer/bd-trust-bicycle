@@ -1,11 +1,12 @@
 import React from "react";
 
-const ProductRow = () => {
+const ProductRow = ({ product, index, refetch }) => {
+  const { product_name, product_price } = product;
   return (
     <tr>
-      <th>1</th>
-      <td>Test</td>
-      <td>250</td>
+      <th>{index + 1}</th>
+      <td>{product_name}</td>
+      <td>{product_price}</td>
       <td>
         <button className="btn btn-error btn-sm text-white">Delete</button>
       </td>

@@ -1,6 +1,9 @@
+import { signOut } from "firebase/auth";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import auth from "../../../firebase.init";
 
 const AddProduct = () => {
   const {
@@ -8,6 +11,8 @@ const AddProduct = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     // console.log(data);
@@ -19,7 +24,14 @@ const AddProduct = () => {
       },
       body: JSON.stringify(data),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          signOut(auth);
+          localStorage.removeItem("accessToken");
+          navigate("/login");
+        }
+        return res.json();
+      })
       .then((data) => {
         console.log(data);
         toast.success("Product added successfully. Alhamdulillah!!");

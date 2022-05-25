@@ -19,7 +19,7 @@ const AdminRow = ({ admin, index, refetch }) => {
       .then((data) => {
         if (data.modifiedCount > 0) {
           refetch();
-          toast.success(`Successfully make an user. Alhamdulillah!!`);
+          toast.success("Successfully make an user. Alhamdulillah!!");
         }
       });
   };
