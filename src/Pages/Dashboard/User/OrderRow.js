@@ -1,9 +1,10 @@
 import React from "react";
 
-const OrderRow = () => {
+const OrderRow = ({ order, index }) => {
+  const { product_name } = order;
   return (
     <tr>
-      <th>1</th>
+      <th>{index + 1}</th>
       <td>
         <div class="avatar">
           <div class="mask mask-squircle w-12 h-12">
@@ -14,7 +15,7 @@ const OrderRow = () => {
           </div>
         </div>
       </td>
-      <td>Cy Ganderton</td>
+      <td>{product_name}</td>
       <td>250</td>
       <td>
         <button className="btn btn-error btn-xs">Delete</button>
