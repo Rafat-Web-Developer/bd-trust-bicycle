@@ -1,31 +1,32 @@
 import { signOut } from "firebase/auth";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import Loading from "../Shared/Loading";
 import SinglePart from "./SinglePart";
 
 const AllParts = () => {
-  const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch("http://localhost:5000/products", {
+  const { data: products, isLoading } = useQuery("products", () =>
+    fetch(`http://localhost:5000/products`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
+    }).then((res) => {
+      if (res.status === 401 || res.status === 403) {
+        signOut(auth);
+        localStorage.removeItem("accessToken");
+        navigate("/login");
+      }
+      return res.json();
     })
-      .then((res) => {
-        if (res.status === 401 || res.status === 403) {
-          signOut(auth);
-          localStorage.removeItem("accessToken");
-          navigate("/login");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setProducts(data);
-      });
-  }, [products]);
+  );
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
 
   return (
     <main className="m-6">
