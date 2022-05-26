@@ -6,7 +6,13 @@ const ProductRow = ({
   setShowProductDeleteModal,
   setModalData,
 }) => {
-  const { product_name, product_price } = product;
+  const {
+    product_image,
+    product_name,
+    product_price,
+    available_quantity,
+    minimum_order_quantity,
+  } = product;
 
   const handleShowModel = () => {
     setModalData(product);
@@ -15,8 +21,17 @@ const ProductRow = ({
   return (
     <tr>
       <th>{index + 1}</th>
+      <td>
+        <div class="avatar">
+          <div class="mask mask-squircle w-12 h-12">
+            <img src={product_image} alt="Avatar Tailwind CSS Component" />
+          </div>
+        </div>
+      </td>
       <td>{product_name}</td>
       <td>{product_price}</td>
+      <td>{available_quantity}</td>
+      <td>{minimum_order_quantity}</td>
       <td>
         <label
           onClick={handleShowModel}

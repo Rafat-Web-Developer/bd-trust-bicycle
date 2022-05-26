@@ -7,8 +7,14 @@ const OrderRow = ({
   setShowOrderDeleteModal,
   setOrderDeleteData,
 }) => {
-  const { _id, product_name, product_price, payment_status, transaction_id } =
-    order;
+  const {
+    _id,
+    product_image,
+    product_name,
+    product_price,
+    payment_status,
+    transaction_id,
+  } = order;
 
   const navigate = useNavigate();
 
@@ -27,10 +33,7 @@ const OrderRow = ({
       <td>
         <div class="avatar">
           <div class="mask mask-squircle w-12 h-12">
-            <img
-              src="https://api.lorem.space/image/shoes?w=400&h=225"
-              alt="Avatar Tailwind CSS Component"
-            />
+            <img src={product_image} alt="product_image" />
           </div>
         </div>
       </td>

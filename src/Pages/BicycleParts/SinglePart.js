@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 const SinglePart = ({ product }) => {
   const {
     _id,
+    product_image,
     product_name,
     product_description,
     product_price,
@@ -20,11 +21,7 @@ const SinglePart = ({ product }) => {
   return (
     <div className="card lg:max-w-96 bg-base-200 shadow-xl">
       <figure className="px-10 pt-10">
-        <img
-          src="https://api.lorem.space/image/shoes?w=400&h=225"
-          alt="Shoes"
-          className="rounded-xl"
-        />
+        <img src={product_image} alt="Product_image" className="rounded-xl" />
       </figure>
       <div className="card-body items-center text-center">
         <h2 className="card-title text-primary">{product_name}</h2>
