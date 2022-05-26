@@ -33,12 +33,23 @@ function App() {
       <ToastContainer />
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
-        <Route path="/allParts" element={<AllParts></AllParts>}></Route>
+        <Route
+          path="/allParts"
+          element={
+            <RequireAuth>
+              <RequireUser>
+                <AllParts></AllParts>
+              </RequireUser>
+            </RequireAuth>
+          }
+        ></Route>
         <Route
           path="/purchase/:product_id"
           element={
             <RequireAuth>
-              <Purchase></Purchase>
+              <RequireUser>
+                <Purchase></Purchase>
+              </RequireUser>
             </RequireAuth>
           }
         ></Route>

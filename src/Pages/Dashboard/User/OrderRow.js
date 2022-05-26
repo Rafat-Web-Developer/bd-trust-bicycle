@@ -54,7 +54,7 @@ const OrderRow = ({
           </label>
         ) : (
           <button onClick={handlePayButton} className="btn btn-primary btn-xs">
-            Pay
+            Pay Now
           </button>
         )}
       </td>

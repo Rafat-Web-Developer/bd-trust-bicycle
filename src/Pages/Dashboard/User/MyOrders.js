@@ -15,10 +15,10 @@ const MyOrders = () => {
 
   const navigate = useNavigate();
   const {
-    data: orders,
+    data: orderProducts,
     isLoading,
     refetch,
-  } = useQuery("orders", () =>
+  } = useQuery("orderProducts", () =>
     fetch(`http://localhost:5000/myOrders/${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -55,7 +55,7 @@ const MyOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order, index) => (
+            {orderProducts.map((order, index) => (
               <OrderRow
                 key={order._id}
                 order={order}

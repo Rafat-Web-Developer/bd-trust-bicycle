@@ -38,7 +38,7 @@ const Signup = () => {
   }
 
   if (token) {
-    navigate("/allParts");
+    navigate("/");
   }
 
   const onSubmit = async (data) => {

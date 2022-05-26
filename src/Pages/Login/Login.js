@@ -38,7 +38,7 @@ const Login = () => {
   }
 
   if (token) {
-    navigate("/allParts");
+    navigate("/");
   }
 
   const onSubmit = async (data) => {
