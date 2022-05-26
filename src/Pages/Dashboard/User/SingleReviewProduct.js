@@ -7,7 +7,7 @@ const SingleReviewProduct = ({ orderedProduct, index }) => {
   const navigate = useNavigate();
 
   const handleAddReview = () => {
-    navigate(`/checkout/${_id}`);
+    navigate(`/dashboard/confirmReview/${_id}`);
   };
   return (
     <tr>

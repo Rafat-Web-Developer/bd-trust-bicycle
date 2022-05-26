@@ -11,11 +11,7 @@ const AddReview = () => {
   const [user, loading] = useAuthState(auth);
 
   const navigate = useNavigate();
-  const {
-    data: orderProducts,
-    isLoading,
-    refetch,
-  } = useQuery("orderProducts", () =>
+  const { data: reviewProducts, isLoading } = useQuery("reviewProducts", () =>
     fetch(`https://young-dawn-47483.herokuapp.com/myOrders/${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -48,7 +44,7 @@ const AddReview = () => {
             </tr>
           </thead>
           <tbody>
-            {orderProducts.map((order, index) => (
+            {reviewProducts.map((order, index) => (
               <SingleReviewProduct
                 key={order._id}
                 orderedProduct={order}

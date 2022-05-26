@@ -24,6 +24,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Purchase from "./Pages/Purchase/Purchase";
 import Checkout from "./Pages/CheckOut/Checkout";
+import ConfirmReview from "./Pages/Dashboard/User/ConfirmReview";
 
 function App() {
   return (
@@ -114,6 +115,14 @@ function App() {
             element={
               <RequireUser>
                 <MyOrders></MyOrders>
+              </RequireUser>
+            }
+          ></Route>
+          <Route
+            path="confirmReview/:review_id"
+            element={
+              <RequireUser>
+                <ConfirmReview></ConfirmReview>
               </RequireUser>
             }
           ></Route>
