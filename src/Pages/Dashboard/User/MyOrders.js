@@ -3,24 +3,34 @@ import OrderRow from "./OrderRow";
 import Loading from "../../Shared/Loading";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
+import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
 
 const MyOrders = () => {
   const [user, loading] = useAuthState(auth);
-  const [orders, setOrders] = useState([]);
 
-  useEffect(() => {
-    const email = user?.email;
-    const url = `http://localhost:5000/myOrders/${email}`;
-    fetch(url, {
+  const navigate = useNavigate();
+  const {
+    data: orders,
+    isLoading,
+    refetch,
+  } = useQuery("products", () =>
+    fetch(`http://localhost:5000/myOrders/${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
+    }).then((res) => {
+      if (res.status === 401 || res.status === 403) {
+        signOut(auth);
+        localStorage.removeItem("accessToken");
+        navigate("/login");
+      }
+      return res.json();
     })
-      .then((res) => res.json())
-      .then((data) => setOrders(data));
-  }, [user]);
+  );
 
-  if (loading) {
+  if (loading || isLoading) {
     return <Loading></Loading>;
   }
 
