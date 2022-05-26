@@ -1,7 +1,18 @@
 import React from "react";
 
-const OrderRow = ({ order, index }) => {
+const OrderRow = ({
+  order,
+  index,
+  setShowOrderDeleteModal,
+  setOrderDeleteData,
+}) => {
   const { product_name } = order;
+
+  const handleOrderDelete = () => {
+    setOrderDeleteData(order);
+    setShowOrderDeleteModal(true);
+  };
+
   return (
     <tr>
       <th>{index + 1}</th>
@@ -18,7 +29,13 @@ const OrderRow = ({ order, index }) => {
       <td>{product_name}</td>
       <td>250</td>
       <td>
-        <button className="btn btn-error btn-xs">Delete</button>
+        <label
+          onClick={handleOrderDelete}
+          for="my_order_delete_modal"
+          class="btn btn-error btn-xs"
+        >
+          Delete
+        </label>
       </td>
     </tr>
   );

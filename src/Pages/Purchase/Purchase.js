@@ -80,7 +80,7 @@ const Purchase = () => {
             console.log(data);
             toast.error(data?.message);
           } else {
-            toast.success(data?.message);
+            toast.success("Successfully Order This Product Alhamdulillah !!");
           }
         });
       reset();

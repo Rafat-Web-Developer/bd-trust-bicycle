@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import OrderRow from "./OrderRow";
 import Loading from "../../Shared/Loading";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -6,16 +6,19 @@ import auth from "../../../firebase.init";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
+import MyOrderDeleteModal from "./MyOrderDeleteModal";
 
 const MyOrders = () => {
   const [user, loading] = useAuthState(auth);
+  const [orderDeleteData, setOrderDeleteData] = useState({});
+  const [showOrderDeleteModal, setShowOrderDeleteModal] = useState(false);
 
   const navigate = useNavigate();
   const {
     data: orders,
     isLoading,
     refetch,
-  } = useQuery("products", () =>
+  } = useQuery("orders", () =>
     fetch(`http://localhost:5000/myOrders/${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -50,11 +53,25 @@ const MyOrders = () => {
           </thead>
           <tbody>
             {orders.map((order, index) => (
-              <OrderRow key={order._id} order={order} index={index}></OrderRow>
+              <OrderRow
+                key={order._id}
+                order={order}
+                index={index}
+                setOrderDeleteData={setOrderDeleteData}
+                setShowOrderDeleteModal={setShowOrderDeleteModal}
+              ></OrderRow>
             ))}
           </tbody>
         </table>
       </div>
+      {showOrderDeleteModal && (
+        <MyOrderDeleteModal
+          order={orderDeleteData}
+          setOrderDeleteData={setOrderDeleteData}
+          refetch={refetch}
+          setShowOrderDeleteModal={setShowOrderDeleteModal}
+        ></MyOrderDeleteModal>
+      )}
     </section>
   );
 };
