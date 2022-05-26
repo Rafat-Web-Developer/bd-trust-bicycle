@@ -34,7 +34,7 @@ const Parts = () => {
         Bicycle Parts
       </h1>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {homeProducts.map((product) => (
+        {homeProducts.slice(0, 3).map((product) => (
           <Part key={product._id} product={product}></Part>
         ))}
       </div>
