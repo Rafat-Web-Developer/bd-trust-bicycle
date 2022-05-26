@@ -1,24 +1,11 @@
-import { signOut } from "firebase/auth";
 import React from "react";
 import { useQuery } from "react-query";
-import { useNavigate } from "react-router-dom";
-import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 import Review from "./Review";
 
 const Reviews = () => {
-  const navigate = useNavigate();
   const { data: reviews, isLoading } = useQuery("reviews", () =>
-    fetch(`https://young-dawn-47483.herokuapp.com/reviews`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => {
-      if (res.status === 401 || res.status === 403) {
-        signOut(auth);
-        localStorage.removeItem("accessToken");
-        navigate("/login");
-      }
+    fetch(`https://young-dawn-47483.herokuapp.com/reviews`).then((res) => {
       return res.json();
     })
   );
