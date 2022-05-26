@@ -15,6 +15,7 @@ const OrderRow = ({
     quantity,
     payment_status,
     transaction_id,
+    shipment_status,
   } = order;
 
   const navigate = useNavigate();
@@ -43,6 +44,7 @@ const OrderRow = ({
       <td>{quantity}</td>
       <td>{!payment_status ? "UNPAID" : "PAID"}</td>
       <td>{!transaction_id ? "NULL" : transaction_id}</td>
+      <td>{!shipment_status ? "Pending" : "Shipped"}</td>
       <td>
         {payment_status ? (
           <label
