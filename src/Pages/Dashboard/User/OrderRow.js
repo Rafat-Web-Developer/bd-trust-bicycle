@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const OrderRow = ({
   order,
@@ -6,11 +7,18 @@ const OrderRow = ({
   setShowOrderDeleteModal,
   setOrderDeleteData,
 }) => {
-  const { product_name, product_price, payment_status, transaction_id } = order;
+  const { _id, product_name, product_price, payment_status, transaction_id } =
+    order;
+
+  const navigate = useNavigate();
 
   const handleOrderDelete = () => {
     setOrderDeleteData(order);
     setShowOrderDeleteModal(true);
+  };
+
+  const handlePayButton = () => {
+    navigate(`/checkout/${_id}`);
   };
 
   return (
@@ -40,7 +48,7 @@ const OrderRow = ({
             Delete
           </label>
         ) : (
-          <button onClick={handleOrderDelete} class="btn btn-primary btn-xs">
+          <button onClick={handlePayButton} class="btn btn-primary btn-xs">
             Pay
           </button>
         )}

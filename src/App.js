@@ -23,6 +23,7 @@ import RequireAdmin from "./Pages/Auth/RequireAdmin";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Purchase from "./Pages/Purchase/Purchase";
+import Checkout from "./Pages/CheckOut/Checkout";
 
 function App() {
   return (
@@ -37,6 +38,14 @@ function App() {
           element={
             <RequireAuth>
               <Purchase></Purchase>
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/checkout/:order_id"
+          element={
+            <RequireAuth>
+              <Checkout></Checkout>
             </RequireAuth>
           }
         ></Route>
