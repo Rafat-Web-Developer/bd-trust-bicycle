@@ -14,7 +14,7 @@ const SinglePart = ({ product }) => {
   const navigate = useNavigate();
 
   const handleBuy = () => {
-    navigate(`/checkout/${_id}`);
+    navigate(`/purchase/${_id}`);
   };
 
   return (
