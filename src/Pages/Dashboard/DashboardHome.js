@@ -10,7 +10,7 @@ const DashboardHome = () => {
   const [admin, checkAdminLoading] = useCheckAdmin(user);
 
   const { data: totalCount, isLoading } = useQuery("totalCount", () =>
-    fetch("http://localhost:5000/total", {
+    fetch(`http://localhost:5000/total/${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
@@ -63,7 +63,9 @@ const DashboardHome = () => {
           <div class="stats bg-primary text-primary-content">
             <div class="stat text-center">
               <div class="stat-title font-bold">My Total Orders</div>
-              <div class="stat-value text-center">2</div>
+              <div class="stat-value text-center">
+                {totalCount?.ordersCount}
+              </div>
             </div>
           </div>
         )}
