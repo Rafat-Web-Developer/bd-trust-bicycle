@@ -8,6 +8,7 @@ const Carousel = () => {
           src="https://api.lorem.space/image/car?w=800&h=200&hash=8B7BCDC2"
           className="w-full"
           alt="carousel_img"
+          height="200px"
         />{" "}
         /
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
