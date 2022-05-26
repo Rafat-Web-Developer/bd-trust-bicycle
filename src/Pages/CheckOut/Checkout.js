@@ -16,7 +16,7 @@ const Checkout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const url = `http://localhost:5000/order/${order_id}`;
+    const url = `https://young-dawn-47483.herokuapp.com/order/${order_id}`;
     fetch(url, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -32,7 +32,7 @@ const Checkout = () => {
       transaction_id: data.transaction_id,
     };
 
-    const url = `http://localhost:5000/order/${order_id}`;
+    const url = `https://young-dawn-47483.herokuapp.com/order/${order_id}`;
     fetch(url, {
       method: "PUT",
       headers: {

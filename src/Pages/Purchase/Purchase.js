@@ -21,7 +21,7 @@ const Purchase = () => {
   const navigate = useNavigate();
 
   const { data: product, isLoading } = useQuery("products", () =>
-    fetch(`http://localhost:5000/product/${product_id}`, {
+    fetch(`https://young-dawn-47483.herokuapp.com/product/${product_id}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
@@ -67,7 +67,7 @@ const Purchase = () => {
       };
       setErrorMessage("");
 
-      fetch("http://localhost:5000/order", {
+      fetch("https://young-dawn-47483.herokuapp.com/order", {
         method: "POST",
         headers: {
           "content-type": "application/json",

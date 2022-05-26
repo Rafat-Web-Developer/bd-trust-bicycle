@@ -16,7 +16,7 @@ const OrderRow = ({ order, index, refetch }) => {
   } = order;
 
   const handleShipmentStatus = () => {
-    const url = `http://localhost:5000/order/shipped/${_id}`;
+    const url = `https://young-dawn-47483.herokuapp.com/order/shipped/${_id}`;
     fetch(url, {
       method: "PUT",
       headers: {

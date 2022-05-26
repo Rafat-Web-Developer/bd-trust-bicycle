@@ -25,7 +25,6 @@ import "react-toastify/dist/ReactToastify.css";
 import Purchase from "./Pages/Purchase/Purchase";
 import Checkout from "./Pages/CheckOut/Checkout";
 
-// https://young-dawn-47483.herokuapp.com/
 function App() {
   return (
     <>

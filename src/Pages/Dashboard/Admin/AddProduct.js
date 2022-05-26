@@ -17,7 +17,7 @@ const AddProduct = () => {
 
   const onSubmit = async (data) => {
     // console.log(data);
-    fetch("http://localhost:5000/product", {
+    fetch("https://young-dawn-47483.herokuapp.com/product", {
       method: "POST",
       headers: {
         "content-type": "application/json",

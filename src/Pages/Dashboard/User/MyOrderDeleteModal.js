@@ -14,7 +14,7 @@ const MyOrderDeleteModal = ({
   const navigate = useNavigate();
 
   const handleDeleteOrder = () => {
-    fetch(`http://localhost:5000/order/${_id}`, {
+    fetch(`https://young-dawn-47483.herokuapp.com/order/${_id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

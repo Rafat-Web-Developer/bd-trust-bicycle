@@ -8,7 +8,7 @@ const useCheckAdmin = (user) => {
     setCheckAdminLoading(true);
     const email = user?.email;
     if (email) {
-      fetch(`http://localhost:5000/checkAdmin/${email}`, {
+      fetch(`https://young-dawn-47483.herokuapp.com/checkAdmin/${email}`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },

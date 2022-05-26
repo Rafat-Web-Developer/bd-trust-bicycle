@@ -9,7 +9,7 @@ const useToken = (user) => {
     const currentUser = { email: email, role: "user" };
     if (email) {
       setTokenLoading(true);
-      fetch(`http://localhost:5000/user/${email}`, {
+      fetch(`https://young-dawn-47483.herokuapp.com/user/${email}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

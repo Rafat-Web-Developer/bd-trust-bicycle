@@ -14,7 +14,7 @@ const ProductDeleteModal = ({
   const navigate = useNavigate();
 
   const handleDeleteProduct = () => {
-    fetch(`http://localhost:5000/product/${_id}`, {
+    fetch(`https://young-dawn-47483.herokuapp.com/product/${_id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

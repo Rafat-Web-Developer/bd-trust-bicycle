@@ -10,7 +10,7 @@ const DashboardHome = () => {
   const [admin, checkAdminLoading] = useCheckAdmin(user);
 
   const { data: totalCount, isLoading } = useQuery("totalCount", () =>
-    fetch(`http://localhost:5000/total/${user?.email}`, {
+    fetch(`https://young-dawn-47483.herokuapp.com/total/${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
