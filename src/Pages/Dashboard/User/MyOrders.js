@@ -40,14 +40,15 @@ const MyOrders = () => {
   return (
     <section>
       <h1 className="mb-5 font-bold text-xl">My Orders</h1>
-      <div class="overflow-x-auto">
-        <table class="table table-zebra w-full">
+      <div className="overflow-x-auto">
+        <table className="table table-zebra w-full">
           <thead>
             <tr>
               <th>#</th>
               <th>Image</th>
               <th>Name</th>
               <th>price</th>
+              <th>Quantity</th>
               <th>Payment Status</th>
               <th>Transaction ID</th>
               <th>Action</th>

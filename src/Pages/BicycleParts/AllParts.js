@@ -9,7 +9,7 @@ import SinglePart from "./SinglePart";
 const AllParts = () => {
   const navigate = useNavigate();
 
-  const { data: products, isLoading } = useQuery("products", () =>
+  const { data: allProducts, isLoading } = useQuery("allProducts", () =>
     fetch(`http://localhost:5000/products`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -37,9 +37,9 @@ const AllParts = () => {
           </h1>
           <p className="text-sm uppercase text-muted">You can buy any part</p>
         </div>
-        {products.length !== 0 ? (
+        {allProducts.length !== 0 ? (
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {products?.map((product) => (
+            {allProducts?.map((product) => (
               <SinglePart key={product._id} product={product}></SinglePart>
             ))}
           </div>

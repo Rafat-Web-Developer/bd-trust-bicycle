@@ -39,25 +39,29 @@ const MyOrderDeleteModal = ({
   };
   return (
     <div>
-      <input type="checkbox" id="my_order_delete_modal" class="modal-toggle" />
-      <div class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
-          <h3 class="font-bold text-xl text-error">
+      <input
+        type="checkbox"
+        id="my_order_delete_modal"
+        className="modal-toggle"
+      />
+      <div className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
+          <h3 className="font-bold text-xl text-error">
             Are you sure to delete !!
           </h3>
-          <div class="py-4 font-bold text-primary">
+          <div className="py-4 font-bold text-primary">
             <h1 className="text-center my-2">Order Details</h1>
             <p>Product Name = {product_name}</p>
             <p>Product Price = {product_price}</p>
             <p>Quantity = {quantity}</p>
           </div>
-          <div class="modal-action">
-            <label for="my_order_delete_modal" class="btn btn-primary">
+          <div className="modal-action">
+            <label for="my_order_delete_modal" className="btn btn-primary">
               No
             </label>
             <label
               onClick={handleDeleteOrder}
-              class="btn btn-error text-white font-bold"
+              className="btn btn-error text-white font-bold"
             >
               Yes
             </label>

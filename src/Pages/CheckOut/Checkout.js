@@ -24,6 +24,11 @@ const Checkout = () => {
             Complete Your Payment
           </h2>
           <div className="card-body text-center">
+            <div className="avatar">
+              <div className="w-24 rounded-xl">
+                <img src={order?.product_image} alt="product_image" />
+              </div>
+            </div>
             <h2 className="card-title">
               Product Name :{" "}
               <span className="text-warning font-bold">
@@ -44,7 +49,7 @@ const Checkout = () => {
               <input
                 type="text"
                 placeholder="Transaction ID"
-                class="input input-bordered w-full max-w-xs text-primary font-bold"
+                className="input input-bordered w-full max-w-xs text-primary font-bold"
               />
               <div className="mt-3 flex justify-center">
                 <input

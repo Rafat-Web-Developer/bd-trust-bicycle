@@ -26,44 +26,46 @@ const DashboardHome = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {admin && (
           <>
-            <div class="stats bg-primary text-primary-content">
-              <div class="stat text-center">
-                <div class="stat-title font-bold">Total Admin</div>
-                <div class="stat-value">{totalCount.adminCount}</div>
+            <div className="stats bg-primary text-primary-content">
+              <div className="stat text-center">
+                <div className="stat-title font-bold">Total Admin</div>
+                <div className="stat-value">{totalCount.adminCount}</div>
               </div>
             </div>
-            <div class="stats bg-primary text-primary-content">
-              <div class="stat text-center">
-                <div class="stat-title font-bold">Total Users</div>
-                <div class="stat-value text-center">{totalCount.userCount}</div>
+            <div className="stats bg-primary text-primary-content">
+              <div className="stat text-center">
+                <div className="stat-title font-bold">Total Users</div>
+                <div className="stat-value text-center">
+                  {totalCount.userCount}
+                </div>
               </div>
             </div>
-            <div class="stats bg-primary text-primary-content">
-              <div class="stat text-center">
-                <div class="stat-title font-bold">Total Orders</div>
-                <div class="stat-value text-center">15</div>
+            <div className="stats bg-primary text-primary-content">
+              <div className="stat text-center">
+                <div className="stat-title font-bold">Total Orders</div>
+                <div className="stat-value text-center">15</div>
               </div>
             </div>
-            <div class="stats bg-primary text-primary-content">
-              <div class="stat text-center">
-                <div class="stat-title font-bold">Total Products</div>
-                <div class="stat-value text-center">20</div>
+            <div className="stats bg-primary text-primary-content">
+              <div className="stat text-center">
+                <div className="stat-title font-bold">Total Products</div>
+                <div className="stat-value text-center">20</div>
               </div>
             </div>
-            <div class="stats bg-primary text-primary-content">
-              <div class="stat text-center">
-                <div class="stat-title font-bold">Total Reviews</div>
-                <div class="stat-value text-center">6</div>
+            <div className="stats bg-primary text-primary-content">
+              <div className="stat text-center">
+                <div className="stat-title font-bold">Total Reviews</div>
+                <div className="stat-value text-center">6</div>
               </div>
             </div>
           </>
         )}
 
         {!admin && (
-          <div class="stats bg-primary text-primary-content">
-            <div class="stat text-center">
-              <div class="stat-title font-bold">My Total Orders</div>
-              <div class="stat-value text-center">
+          <div className="stats bg-primary text-primary-content">
+            <div className="stat text-center">
+              <div className="stat-title font-bold">My Total Orders</div>
+              <div className="stat-value text-center">
                 {totalCount?.ordersCount}
               </div>
             </div>

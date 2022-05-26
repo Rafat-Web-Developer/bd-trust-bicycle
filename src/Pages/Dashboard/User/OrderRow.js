@@ -12,6 +12,7 @@ const OrderRow = ({
     product_image,
     product_name,
     product_price,
+    quantity,
     payment_status,
     transaction_id,
   } = order;
@@ -31,14 +32,15 @@ const OrderRow = ({
     <tr>
       <th>{index + 1}</th>
       <td>
-        <div class="avatar">
-          <div class="mask mask-squircle w-12 h-12">
+        <div className="avatar">
+          <div className="mask mask-squircle w-12 h-12">
             <img src={product_image} alt="product_image" />
           </div>
         </div>
       </td>
       <td>{product_name}</td>
       <td>{product_price}</td>
+      <td>{quantity}</td>
       <td>{!payment_status ? "UNPAID" : "PAID"}</td>
       <td>{!transaction_id ? "NULL" : transaction_id}</td>
       <td>
@@ -46,12 +48,12 @@ const OrderRow = ({
           <label
             onClick={handleOrderDelete}
             for="my_order_delete_modal"
-            class="btn btn-error btn-xs"
+            className="btn btn-error btn-xs"
           >
             Delete
           </label>
         ) : (
-          <button onClick={handlePayButton} class="btn btn-primary btn-xs">
+          <button onClick={handlePayButton} className="btn btn-primary btn-xs">
             Pay
           </button>
         )}

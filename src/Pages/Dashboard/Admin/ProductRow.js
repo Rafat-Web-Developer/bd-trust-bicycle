@@ -22,8 +22,8 @@ const ProductRow = ({
     <tr>
       <th>{index + 1}</th>
       <td>
-        <div class="avatar">
-          <div class="mask mask-squircle w-12 h-12">
+        <div className="avatar">
+          <div className="mask mask-squircle w-12 h-12">
             <img src={product_image} alt="Avatar Tailwind CSS Component" />
           </div>
         </div>
@@ -36,7 +36,7 @@ const ProductRow = ({
         <label
           onClick={handleShowModel}
           for="product_delete_modal"
-          class="btn btn-error btn-sm text-white"
+          className="btn btn-error btn-sm text-white"
         >
           Delete
         </label>

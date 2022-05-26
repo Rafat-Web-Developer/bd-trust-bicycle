@@ -37,8 +37,8 @@ const ManageProducts = () => {
   return (
     <section>
       <h1 className="mb-5 font-bold text-xl">All Products</h1>
-      <div class="overflow-x-auto">
-        <table class="table table-zebra w-full">
+      <div className="overflow-x-auto">
+        <table className="table table-zebra w-full">
           <thead>
             <tr>
               <th>#</th>
